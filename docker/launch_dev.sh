@@ -55,6 +55,8 @@ function main() {
           --name "renegade_dev" \
           --net host \
           -w /renegade \
+          -e DISPLAY=$DISPLAY \
+          -v /tmp/.X11-unix:/tmp/.X11-unix \
           --add-host renegade_dev:127.0.0.1 \
           --hostname renegade_dev \
           --pid=host \
