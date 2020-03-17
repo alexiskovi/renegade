@@ -5,7 +5,7 @@ function first_hit() {
     return
   fi
   echo "[INFO] Installing renegade container..."
-  #docker pull kovalexis/renegade_dev:latest
+  docker pull kovalexis/renegade_dev:latest
 }
 
 function stop_containers() {
