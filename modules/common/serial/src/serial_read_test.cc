@@ -9,8 +9,8 @@ int main(int argc, char **argv) {
 
     while(ros::ok()) {
         std::string msg;
-        msg = si.Read();
-        std::cout << msg;
+        if(!si.Read(&msg)) std::cout << "Not recieved any messages" << std::endl;
+        else std::cout << msg << std::endl;
         ros::spinOnce();
         loop_rate.sleep();
     }

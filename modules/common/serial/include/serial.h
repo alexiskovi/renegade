@@ -9,10 +9,10 @@ namespace common {
 
 class SerialInterface {
     public:
-    SerialInterface(const char port[]);
+    SerialInterface(const char *port);
     ~SerialInterface();
     //void Write(unsigned char msg[]);
-    std::string Read();
+    bool Read(std::string* msg);
     protected:
     std::ifstream serial_port;
 };

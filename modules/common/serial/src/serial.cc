@@ -4,11 +4,10 @@
 namespace renegade {
 namespace common {
 
-SerialInterface::SerialInterface(const char port[]) {
-    std::ifstream serial_port (port);
+SerialInterface::SerialInterface(const char *port) {
+    serial_port.open(port);
     if(!serial_port.is_open()) {
         ROS_ERROR("Can't open serial port");
-        return;
     }
     else {
         ROS_INFO("Opened");
@@ -19,10 +18,10 @@ SerialInterface::SerialInterface(const char port[]) {
 //    write(serial_port, msg, sizeof(msg));
 //}
 
-std::string SerialInterface::Read() {
-    std::string msg;
-    for(serial_port >> msg; !serial_port.eof(); serial_port >> msg);
-    return msg;
+bool SerialInterface::Read(std::string *msg) {
+    serial_port >> *msg;
+    if(msg->empty()) return false;
+    else return true;
 }
 
 SerialInterface::~SerialInterface() {
