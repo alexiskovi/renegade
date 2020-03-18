@@ -11,10 +11,10 @@ class SerialInterface {
     public:
     SerialInterface(const char *port);
     ~SerialInterface();
-    //void Write(unsigned char msg[]);
+    void Write(std::string msg);
     bool Read(std::string* msg);
     protected:
-    std::ifstream serial_port;
+    std::fstream serial_port;
 };
 
 }

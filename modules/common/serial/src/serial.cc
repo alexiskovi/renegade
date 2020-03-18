@@ -12,11 +12,12 @@ SerialInterface::SerialInterface(const char *port) {
     else {
         ROS_INFO("Opened");
     }
+  //  std::iostream serialStream(serial_port);
 }
 
-//void SerialInterface::Write(unsigned char msg[]) {
-//    write(serial_port, msg, sizeof(msg));
-//}
+void SerialInterface::Write(std::string msg) {
+    serial_port << msg << std::endl;
+}
 
 bool SerialInterface::Read(std::string *msg) {
     serial_port >> *msg;

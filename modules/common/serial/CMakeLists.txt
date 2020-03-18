@@ -17,12 +17,18 @@ include_directories(
 
 add_library(${PROJECT_NAME} src/serial.cc)
 add_executable(serial_read_test src/serial_read_test.cc)
+add_executable(serial_write_test src/serial_write_test.cc)
 
 target_link_libraries(${PROJECT_NAME}
 ${catkin_LIBRARIES}
 )
 
 target_link_libraries(serial_read_test
+${catkin_LIBRARIES}
+${PROJECT_NAME}
+)
+
+target_link_libraries(serial_write_test
 ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )
