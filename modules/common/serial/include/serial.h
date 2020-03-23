@@ -1,3 +1,6 @@
+#ifndef SERIAL_H
+#define SERIAL_H
+
 #pragma once
 #include <string>
 #include <fstream>
@@ -19,3 +22,5 @@ class SerialInterface {
 
 }
 }
+
+#endif

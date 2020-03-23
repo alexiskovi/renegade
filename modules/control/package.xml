@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>common</name>
-  <version>0.1.0</version>
-  <description>Renegade common libraries package</description>
+  <name>control</name>
+  <version>0.0.0</version>
+  <description>Renegade control package</description>
 
   <maintainer email="kov_alexis@mail.ru">alexiskovi</maintainer>
 

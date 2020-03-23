@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
     renegade::common::SerialInterface si("/dev/ttyUSB0");
 
     while(ros::ok()) {
-        std::string msg = "Hellllllllo!!!";
+        std::string msg = "0;000;000;";
         si.Write(msg);
         ros::spinOnce();
         loop_rate.sleep();

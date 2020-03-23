@@ -5,10 +5,11 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   geometry_msgs
   sensor_msgs
+  common
 )
 
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 )
 
 find_library(wiringPi_LIB wiringPi)

@@ -12,7 +12,6 @@ SerialInterface::SerialInterface(const char *port) {
     else {
         ROS_INFO("Opened");
     }
-  //  std::iostream serialStream(serial_port);
 }
 
 void SerialInterface::Write(std::string msg) {
