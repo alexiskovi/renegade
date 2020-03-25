@@ -5,7 +5,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   geometry_msgs
   sensor_msgs
-  common
+  serial
+  control
 )
 
 catkin_package(

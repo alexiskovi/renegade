@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(common)
+project(serial)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
@@ -14,7 +14,6 @@ catkin_package(
 include_directories(
   ${catkin_INCLUDE_DIRS}
   include
-  ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}
 )
 
 add_library(${PROJECT_NAME} src/serial.cc)
@@ -36,13 +35,6 @@ ${catkin_LIBRARIES}
 ${PROJECT_NAME}
 )
 
-install(
-  TARGETS ${PROJECT_NAME}
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
-)
-install(
-  DIRECTORY include/${PROJECT_NAME}/
+install(DIRECTORY include/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+  FILES_MATCHING PATTERN "*.h")

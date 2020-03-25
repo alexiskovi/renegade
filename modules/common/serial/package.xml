@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>common</name>
+  <name>serial</name>
   <version>0.1.0</version>
   <description>Renegade common libraries package</description>
 

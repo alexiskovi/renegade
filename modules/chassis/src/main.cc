@@ -1,6 +1,6 @@
 #include <motor.h>
 #include <ros/ros.h>
-#include <common/serial.h>
+#include <serial.h>
 #include <control/control_cmd.h>
 
 void control_callback(const control::control_cmd& msg){
