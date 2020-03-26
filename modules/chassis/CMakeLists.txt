@@ -21,7 +21,7 @@ include_directories(
   include
 )
 
-add_executable(${PROJECT_NAME} src/main.cc src/motor.cc)
+add_executable(${PROJECT_NAME} src/chassis.cc)
 
 target_link_libraries(${PROJECT_NAME}
 ${catkin_LIBRARIES}
