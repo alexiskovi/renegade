@@ -13,7 +13,7 @@ catkin_package(
   INCLUDE_DIRS include
 )
 
-find_library(wiringPi_LIB wiringPi)
+#find_library(wiringPi_LIB wiringPi)
 
 include_directories(
   ${catkin_INCLUDE_DIRS}

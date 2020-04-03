@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include <serial/serial.h>
+#include <serial.h>
 #include <sstream>
 
 renegade::common::SerialInterface serial_actuator("/dev/ttyUSB0");

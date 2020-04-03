@@ -7,7 +7,7 @@ namespace common {
 SerialInterface::SerialInterface(const char *port) {
     serial_port.open(port);
     if(!serial_port.is_open()) {
-        ROS_ERROR("Can't open serial port");
+        ROS_FATAL("Can't open serial port");
     }
     else {
         ROS_INFO("Opened");
