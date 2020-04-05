@@ -1,6 +1,7 @@
 #include <ublox.h>
 #include <serial.h>
 #include <iostream>
+#include <string>
 
 
 namespace renegade {
@@ -14,11 +15,11 @@ Ublox::~Ublox() {
     ROS_INFO("Stopping GPS node");
 }
 
-bool Ublox::GetNewLine(std::string* line) {
-    std::string msg;
-    if (!ublox_serial.Read(&msg);) return false;
-    else{
-        line = msg;
+bool Ublox::GetNewLine(std::string * line) {
+    //std::string msg = *line;
+    if (!ublox_serial.Read(line))
+      return false;
+    else {
         return true;
     }
 }
@@ -26,20 +27,19 @@ bool Ublox::GetNewLine(std::string* line) {
 std::vector<double> Ublox::Parse(std::string msg) {
     std::string delimeter = ";";
 
-    auto start = 0U;
-    auto end = msg.find(delimeter);
+    size_t start = 0U;
+    size_t end;
 
     std::string token;
     std::vector <double> result;
 
-    while ((end != std::string::npos) {
+    while ((end = msg.find(delimeter, start)) != std::string::npos) {
       token = msg.substr(start, end-start);
-      double ttoken = std::stod(token);
+      double ttoken = std::stod (token);
       result.push_back(ttoken);
       start = end + delimeter.length();
-      end = msg.find(delimeter, start)
     }
-    result.push_back(msg.substr(start, end-1));
+    result.push_back(std::stod (msg.substr(start, msg.length()-1)));
     return result;
 }
 
