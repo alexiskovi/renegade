@@ -1,29 +1,35 @@
-#include <motor.h>
+#include <ublox.h>
 #include <ros/ros.h>
-#include <control/control_cmd.h>
+#include <gps/gps_msg.h>
 
-
-void control_callback(const control::control_cmd& msg){
-    std::stringstream act_cmd;
-    act_cmd << std::setw(1) << (int)msg.direction << ';';
-    act_cmd << std::setfill('0') << std::setw(3) << (int)msg.throttle << ';';
-    act_cmd << std::setfill('0') << std::setw(3) << (int)msg.steering << ";.";
-
-    //std::cout << sizeof(act_cmd.str());
-
-    serial_actuator.Write(act_cmd.str());
-}
 
 int main(int argc, char** argv) {
 
-    const bool drive_by_actuator = true;
-
-    ros::init(argc, argv, "chassis");
-    ros::NodeHandle chassis;
+    ros::init(argc, argv, "gps");
+    ros::NodeHandle gps;
     
-    ros::Subscriber control_sub = chassis.subscribe("/renegade/control", 5, control_callback);
+    ros::Publisher gps_pub = gps.advertise<gps::gps_msg>("/renegade/gps", 5);
 
-    ros::spin();
+    renegade::gps::Ublox ublox;
 
+    while(ros::ok()){
+        gps::gps_msg msg;
+        std::string line;
+        if(ublox.GetNewLine(&line)){
+            std::vector <double> parsed;
+            parsed = ublox.Parse(line);
+            
+            //fill header
+            
+            msg.longitude = parsed[0];
+            msg.latitude = parsed[1];
+            msg.altitude = parsed[2];
+            msg.velocity = parsed[3];
+            msg.satellites_num = (int) parsed[4];
+
+            gps_pub.publish(msg);
+        }
+        ros::spinOnce();
+    }
     return 0;
 }

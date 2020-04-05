@@ -1,19 +1,27 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(chassis)
+project(gps)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  geometry_msgs
-  sensor_msgs
+  std_msgs
   serial
-  control
+  message_generation
+)
+
+add_message_files(
+  FILES
+  gps_msg.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 catkin_package(
   INCLUDE_DIRS include
+  CATKIN_DEPENDS message_runtime
 )
-
-#find_library(wiringPi_LIB wiringPi)
 
 include_directories(
   ${catkin_INCLUDE_DIRS}
@@ -21,7 +29,7 @@ include_directories(
   include
 )
 
-add_executable(${PROJECT_NAME} src/chassis.cc)
+add_executable(${PROJECT_NAME} src/gps.cc src/ublox.cc)
 
 target_link_libraries(${PROJECT_NAME}
 ${catkin_LIBRARIES}

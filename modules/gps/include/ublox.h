@@ -1,8 +1,9 @@
+#pragma once
 #include "ros/ros.h"
 #include <serial.h>
 #include <sstream>
 
-renegade::common::SerialInterface serial_actuator("/dev/ttyUSB0");
+renegade::common::SerialInterface ublox_serial("/dev/ttyACM0");
 
 namespace renegade {
 namespace gps {
@@ -11,8 +12,8 @@ class Ublox {
     public:
     Ublox();
     ~Ublox();
-    bool GetNewLine();
-    vector<double> Parse(string * msg);
+    bool GetNewLine(std::string* line);
+    std::vector<double> Parse(std::string msg);
 };
 
 }

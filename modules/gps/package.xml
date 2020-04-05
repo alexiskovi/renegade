@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>chassis</name>
+  <name>gps</name>
   <version>0.0.1</version>
-  <description>Renegade chassis package</description>
+  <description>Renegade gps package</description>
 
-  <maintainer email="kov_alexis@mail.ru">alexiskovi</maintainer>
+  <maintainer email="corteccia@yandex.ru">corteccia</maintainer>
 
   <license>TODO</license>
 
@@ -14,16 +14,14 @@
   <build_depend>std_msgs</build_depend>
   <build_depend>message_generation</build_depend>
   <build_depend>serial</build_depend>
-  <build_depend>control</build_depend>
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>std_msgs</build_export_depend>
-  <build_export_depend>control</build_export_depend>
+  <build_depend>serial</build_depend>
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>message_runtime</exec_depend>
-  <exec_depend>control</exec_depend>
 
   <export>
 
