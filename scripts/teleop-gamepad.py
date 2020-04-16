@@ -3,8 +3,8 @@ import rospy
 from control.msg import control_cmd
 
 MAX_THROTTLE = 125
-MAX_STEERING = 100
-MIN_STEERING = 50
+MAX_STEERING = 110
+MIN_STEERING = 60
 STEERING_STEP = 5
 
 
@@ -29,7 +29,7 @@ def main():
 
   throttle_cmd = 0
   direction_cmd = 0
-  steering_cmd = 75
+  steering_cmd = 85
 
   while 1:
     cmd = control_cmd()
@@ -45,7 +45,7 @@ def main():
           else:
             direction_cmd = 0
         if event.axis == 3:
-          steering_cmd = 75 - int(-event.value * (MAX_STEERING - 75))
+          steering_cmd = 85 - int(-event.value * (MAX_STEERING - 85))
           if steering_cmd > MAX_STEERING:
             steering_cmd = MAX_STEERING
           if steering_cmd < MIN_STEERING:

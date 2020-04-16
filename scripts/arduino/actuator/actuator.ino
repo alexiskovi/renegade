@@ -11,7 +11,7 @@ const int msg_length_bytes = 32; //msg = X;XXX;XXX;
 //Minimal steering angle allowed in degrees
 const int min_angle = 50;
 //Maximal steering angle allowed in degrees
-const int max_angle = 110;
+const int max_angle = 130;
 
 const int RED = 5;
 const int BLUE = 4;
