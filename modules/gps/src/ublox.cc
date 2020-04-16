@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+renegade::common::SerialInterface ublox_serial("/dev/ttyUSB0");
 
 namespace renegade {
 namespace gps {

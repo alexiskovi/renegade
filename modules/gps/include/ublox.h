@@ -3,8 +3,6 @@
 #include <serial.h>
 #include <sstream>
 
-renegade::common::SerialInterface ublox_serial("/dev/ttyACM0");
-
 namespace renegade {
 namespace gps {
 

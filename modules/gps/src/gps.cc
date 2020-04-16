@@ -17,10 +17,10 @@ int main(int argc, char** argv) {
         std::string line;
         if(ublox.GetNewLine(&line)){
             std::vector <double> parsed;
+            std::cerr << line << std::endl;
             parsed = ublox.Parse(line);
             
             //fill header
-            
             msg.longitude = parsed[0];
             msg.latitude = parsed[1];
             msg.altitude = parsed[2];
@@ -29,7 +29,6 @@ int main(int argc, char** argv) {
 
             gps_pub.publish(msg);
         }
-        ros::spinOnce();
     }
     return 0;
 }
