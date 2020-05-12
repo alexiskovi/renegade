@@ -3,7 +3,6 @@ project(control)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  geometry_msgs
   std_msgs
   message_generation
 )

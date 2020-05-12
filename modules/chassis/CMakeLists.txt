@@ -3,14 +3,25 @@ project(chassis)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  geometry_msgs
-  sensor_msgs
   serial
   control
+  std_msgs
+  message_generation
+)
+
+add_message_files(
+  FILES
+  chassis_msg.msg
+)
+
+generate_messages(
+  DEPENDENCIES
+  std_msgs
 )
 
 catkin_package(
   INCLUDE_DIRS include
+  CATKIN_DEPENDS message_runtime
 )
 
 #find_library(wiringPi_LIB wiringPi)
