@@ -6,7 +6,7 @@
 
 
 renegade::common::SerialInterface serial_actuator("/dev/ttyUSB1");
-renegade::common::SerialInterface chassis_state("/dev/ttyUSB0");
+
 
 void control_callback(const control::control_cmd& msg){
     std::stringstream act_cmd;
@@ -29,15 +29,7 @@ int main(int argc, char** argv) {
 
     std::string line;
 
-    while(ros::ok()) {
-        if(chassis_state.Read(&line)){
-            chassis::chassis_msg msg;
-            std::vector <double> state;
-            state = chassis_state.Parse(line);
-            msg.velocity = state[0];
-            chassis_pub.publish(msg);
-        }
-    }
+    ros::spin();
 
     return 0;
 }

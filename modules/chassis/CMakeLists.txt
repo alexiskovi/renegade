@@ -34,6 +34,12 @@ include_directories(
 
 add_executable(${PROJECT_NAME} src/chassis.cc)
 
+add_executable(vehicle_state_provider src/vehicle_state.cc)
+
 target_link_libraries(${PROJECT_NAME}
+${catkin_LIBRARIES}
+)
+
+target_link_libraries(vehicle_state_provider
 ${catkin_LIBRARIES}
 )
