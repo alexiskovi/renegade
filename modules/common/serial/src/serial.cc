@@ -35,11 +35,11 @@ std::vector<double> SerialInterface::Parse(std::string msg) {
 
     while ((end = msg.find(delimeter, start)) != std::string::npos) {
       token = msg.substr(start, end-start);
-      double ttoken = std::stod (token);
+      double ttoken = std::stod(token);
       result.push_back(ttoken);
       start = end + delimeter.length();
     }
-    result.push_back(std::stod (msg.substr(start, msg.length()-1)));
+    result.push_back(std::stod (msg.substr(start, msg.length())));
     return result;
 }
 
